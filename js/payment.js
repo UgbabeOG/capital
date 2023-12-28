@@ -36,9 +36,10 @@ function validateBeneficiaryAccount() {
 function handleTransfer(event) {
   event.preventDefault();
   const transactionPin = transactionPinInput.value;
+  transferBtn.disabled = true;
+  console.log("hello");
 
   if (transactionPin === "1709") {
-    transferBtn.disable = true;
     showLoadingAnimation();
     setTimeout(() => {
       showAccountRestrictedDialog();
