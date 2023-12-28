@@ -37,7 +37,6 @@ function handleTransfer(event) {
   event.preventDefault();
   const transactionPin = transactionPinInput.value;
   transferBtn.disabled = true;
-  console.log("hello");
 
   if (transactionPin === "1709") {
     showLoadingAnimation();
