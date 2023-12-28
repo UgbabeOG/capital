@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/capitalAssets/favi.png"
+      type="image/x-icon"
+    />
     <title>Payments</title>
 
     <link rel="stylesheet" href="/css/payment.css" />
@@ -139,8 +144,7 @@
       </nav>
     </header>
     <main>
-      <div id="payment-loader">
-      </div>
+      <div id="payment-loader"></div>
       <section class="transfer hieght">
         <div class="transfer-form">
           <h2>Transfer Funds</h2>
@@ -152,28 +156,59 @@
             </select>
 
             <label for="beneficiary-account">Beneficiary Account Number:</label>
-            <input type="text" id="beneficiary-account" name="beneficiary"
-            placeholder="Enter beneficiary account number" required
-            class="invalid" />
+            <input
+              type="text"
+              id="beneficiary-account"
+              name="beneficiary"
+              placeholder="Enter beneficiary account number"
+              required
+              class="invalid"
+            />
 
             <label for="routing-number">Routing Number:</label>
-            <input type="text" id="routing-number" name="routing"
-            placeholder="Enter routing number" required />
+            <input
+              type="text"
+              id="routing-number"
+              name="routing"
+              placeholder="Enter routing number"
+              required
+            />
 
             <label for="beneficiary-bank">Beneficiary's Bank Name:</label>
-            <input type="text" id="beneficiary-bank" name="beneficiary-bank"
-            placeholder="Enter beneficiary's bank name" required />
+            <input
+              type="text"
+              id="beneficiary-bank"
+              name="beneficiary-bank"
+              placeholder="Enter beneficiary's bank name"
+              required
+            />
             <label for="beneficiary-name">Beneficiary's Name:</label>
-            <input type="text" id="beneficiary-name" name="beneficiary-name"
-            placeholder="Beneficiary's name" disabled required />
+            <input
+              type="text"
+              id="beneficiary-name"
+              name="beneficiary-name"
+              placeholder="Beneficiary's name"
+              disabled
+              required
+            />
 
             <label for="amount">Transaction Amount:</label>
-            <input type="text" id="transaction-amount" name="amount"  
-            placeholder="Enter transaction amount" required />
+            <input
+              type="text"
+              id="transaction-amount"
+              name="amount"
+              placeholder="Enter transaction amount"
+              required
+            />
 
             <label for="transaction-pin">Transaction PIN:</label>
-            <input type="password" id="transaction-pin" name="pin"
-            placeholder="Enter transaction PIN" required />
+            <input
+              type="password"
+              id="transaction-pin"
+              name="pin"
+              placeholder="Enter transaction PIN"
+              required
+            />
 
             <!-- Add your other form fields here -->
 
