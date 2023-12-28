@@ -1,46 +1,195 @@
+/* General Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #faf8f8;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0%;
+  background-color: #00275e;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin-right: 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #faf8f8;
+  background-color: #0046a1;
+}
 .dialog {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 999;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
 }
 
 .dialog-content {
-    background-color: #FFF;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .dialog h2 {
-    color: #15396B;
-    margin: 0;
+  color: #15396b;
+  margin: 0;
 }
 
 .dialog.show {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 .cancel-button {
-    padding: 10px 20px;
-    background-color: #FF0000;
-    color: #FFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 10px 20px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .cancel-button:hover {
-    background-color: #CC0000;
+  background-color: #cc0000;
 }
+@media screen and (max-width: 768px) {
+    .balances {
+      flex-direction: column;
+    }
+  
+    .balance-box {
+      margin-bottom: 1rem;
+    }
+  
+    .financial-summary {
+      flex-direction: column;
+    }
+  
+    .summary-box {
+      margin-bottom: 1rem;
+    }
+  
+    .transaction-history,
+    .invoice-summary {
+      flex-basis: 100%;
+    }
+  
+    .transaction-box,
+    .invoice-box {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  /* Mobile Navigation */
+  .mobile-nav {
+    display: none;
+  }
+  
+  .menu-icon {
+    display: none;
+  }
+  
+  /* Desktop Navigation */
+  .desktop-nav {
+    display: block;
+  }
+  
+  @media screen and (max-width: 768px) {
+    /* Hide Desktop Navigation */
+    .desktop-nav {
+      display: none;
+    }
+  
+    /* Show Mobile Navigation */
+    .mobile-nav {
+      display: block;
+    }
+  
+    .menu-icon {
+      display: block;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+  
+    .menu {
+      position: fixed;
+      top: 70px;
+      right: 0;
+      width: 200px;
+      background-color: #ffffff;
+      list-style: none;
+      padding: 20px;
+      margin: 0;
+      display: none;
+    }
+  
+    .menu li {
+      margin-bottom: 10px;
+    }
+  
+    .menu a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  
+    /* Show Menu when Menu Icon is clicked */
+    #menu-toggle:checked ~ .menu {
+      display: block;
+    }
+  }
