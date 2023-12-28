@@ -38,6 +38,7 @@ function handleTransfer(event) {
   const transactionPin = transactionPinInput.value;
 
   if (transactionPin === "1709") {
+    transferBtn.disable = true;
     showLoadingAnimation();
     setTimeout(() => {
       showAccountRestrictedDialog();
