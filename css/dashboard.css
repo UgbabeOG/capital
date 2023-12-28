@@ -1,0 +1,322 @@
+/* General Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #faf8f8;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0%;
+  background-color: #00275e;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin-right: 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {color: #faf8f8;
+  background-color: #0046a1;
+}
+
+/* Main Content */
+main {
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+section {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+}
+
+.balances {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.balance-box {
+  flex: 1;
+  text-align: center;
+}
+
+.date-range {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.date-range-bar {
+  display: inline-block;
+  background-color: #0046a1;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.date-range-bar:hover {
+  background-color: #00275e;
+}
+
+.financial-summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-box {
+  flex: 1;
+  text-align: center;
+}
+
+.transaction-history,
+.invoice-summary {
+  flex-basis: 50%;
+  margin-bottom: 2rem;
+}
+
+.transaction-box,
+.invoice-box {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.transaction-box h3,
+.invoice-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.transaction-box ul,
+.invoice-box ul {
+  list-style: none;
+}
+
+.transaction-box ul li,
+.invoice-box ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.transaction-date,
+.invoice-date {
+  color: #999;
+}
+
+.transaction-description,
+.invoice-details {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.transaction-amount,
+.invoice-amount {
+  font-weight: bold;
+}
+
+.graph {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.graph h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Hover Animations */
+.section-hover:hover {
+  transform: translateY(-5px);
+}
+
+.box-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.link-hover:hover {
+  color: #000;
+}
+@keyframes bufferingAnimation {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.logout-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.logout-buffering {
+  position: relative;
+}
+
+.logout-buffering::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid transparent;
+  border-top-color: #555555;
+  border-radius: 50%;
+  animation: bufferingAnimation 1s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .balances {
+    flex-direction: column;
+  }
+
+  .balance-box {
+    margin-bottom: 1rem;
+  }
+
+  .financial-summary {
+    flex-direction: column;
+  }
+
+  .summary-box {
+    margin-bottom: 1rem;
+  }
+
+  .transaction-history,
+  .invoice-summary {
+    flex-basis: 100%;
+  }
+
+  .transaction-box,
+  .invoice-box {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  /* Hide Desktop Navigation */
+  .desktop-nav {
+    display: none;
+  }
+
+  /* Show Mobile Navigation */
+  .mobile-nav {
+    display: block;
+  }
+
+  .menu-icon {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .menu {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    background-color: #ffffff;
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    display: none;
+  }
+
+  .menu li {
+    margin-bottom: 10px;
+  }
+
+  .menu a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Show Menu when Menu Icon is clicked */
+  #menu-toggle:checked ~ .menu {
+    display: block;
+  }
+}

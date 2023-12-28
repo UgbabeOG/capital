@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cards</title>
+
+    <link rel="stylesheet" href="/css/cards.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <!-- Navigation -->
+      <nav class="desktop-nav">
+        <ul>
+          <li>
+            <a href="#">Home <i class="fas fa-home"></i></a>
+          </li>
+          <li>
+            <a href="#">Payments <i class="fas fa-money-bill"></i></a>
+          </li>
+          <li>
+            <a href="#">Cards <i class="fas fa-credit-card"></i></a>
+          </li>
+          <li>
+            <a href="#">Invoicing <i class="fas fa-file-invoice"></i></a>
+          </li>
+          <li>
+            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="mobile-nav">
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <ul class="menu">
+          <li>
+            <a href="#">Home <i class="fas fa-home"></i></a>
+          </li>
+          <li>
+            <a href="#">Payments <i class="fas fa-money-bill"></i></a>
+          </li>
+          <li>
+            <a href="#">Cards <i class="fas fa-credit-card"></i></a>
+          </li>
+          <li>
+            <a href="#">Invoicing <i class="fas fa-file-invoice"></i></a>
+          </li>
+          <li>
+            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="cards">
+        <h2>My Cards</h2>
+        <!-- Add your card elements here -->
+      </section>
+    </main>
+
+    <!-- Dialog element -->
+
+    <div class="dialog" id="dialog">
+      <div class="dialog-content">
+        <h2>Capital One</h2>
+        <p>We are Sorry Service Temporarily Unavailable</p>
+        <button class="cancel-button" onclick="goToDashboard()">Cancel</button>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript code to show the dialog box
+      const dialog = document.querySelector(".dialog");
+      dialog.classList.add("show");
+
+      function goToDashboard() {
+        window.location.href = "/html/dashboard.html";
+      }
+    </script>
+    <script>
+      // JavaScript code
+      // Find the logout form element
+      const logoutForm = document.querySelector(".logout-form");
+
+      // Add a submit event listener to the logout form
+      logoutForm.addEventListener("submit", function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Add the logout animation class to the logout form
+        logoutForm.classList.add("logout-animation");
+
+        // Wait for the animation to complete
+        setTimeout(() => {
+          // Perform the logout action, e.g., clear session storage or send a logout request to the server
+
+          // Redirect to the index.html page
+          window.location.href = "/html/index.html";
+        }, 500); // Delay the redirect to match the animation duration
+      });
+    </script>
+  </body>
+</html>

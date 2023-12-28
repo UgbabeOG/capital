@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoicing</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/payment.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="/cards.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <!-- Navigation -->
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="#">Home <i class="fas fa-home"></i></a></li>
+                <li><a href="#">Transfer <i class="fas fa-money-bill"></i></a></li>
+                <li><a href="#">Cards <i class="fas fa-credit-card"></i></a></li>
+                <li><a href="#">Invoicing <i class="fas fa-file-invoice"></i></a></li>
+                <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+        <nav class="mobile-nav">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+                <li><a href="#">Home <i class="fas fa-home"></i></a></li>
+                <li><a href="#">Transfer <i class="fas fa-money-bill"></i></a></li>
+                <li><a href="#">Cards <i class="fas fa-credit-card"></i></a></li>
+                <li><a href="#">Invoicing <i class="fas fa-file-invoice"></i></a></li>
+                <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cards">
+            <h2>Invoicing</h2>
+            <!-- Add your card elements here -->
+        </section>
+    </main>
+
+    <!-- Dialog element -->
+
+
+    <div class="dialog" id="dialog">
+        <div class="dialog-content">
+            <h2>Capital One</h2>
+            <p>We are Sorry Service Temporarily Unavailable</p>
+            <button class="cancel-button" onclick="goToDashboard()">Cancel</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        // JavaScript code to show the dialog box
+        const dialog = document.querySelector('.dialog');
+        dialog.classList.add('show');
+
+        function goToDashboard() {
+            window.location.href = "/html/dashboard.html";
+        }
+
+
+
+    </script>
+</body>
+
+</html>

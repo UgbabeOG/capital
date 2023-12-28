@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+
+    <link rel="stylesheet" href="/css/payment.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="/js/payment.js" defer></script>
+    <style>
+      /* CSS for logout buffering animation */
+      @keyframes bufferingAnimation {
+        0% {
+          transform: rotate(0);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .logout-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .logout-buffering {
+        position: relative;
+      }
+
+      .logout-buffering::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        border: 2px solid transparent;
+        border-top-color: #555555;
+        border-radius: 50%;
+        animation: bufferingAnimation 1s linear infinite;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .payment-loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .hieght {
+        height: 50vh;
+      }
+      .spinner {
+        position: absolute;
+        margin-top: 70%;
+        width: 50px;
+        height: 50px;
+        border: 5px solid #ccc;
+        border-top: 5px solid #1a24da;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!-- Navigation -->
+      <nav class="desktop-nav">
+        <ul>
+          <li>
+            <a href="/html/dashboard.html">Home <i class="fas fa-home"></i></a>
+          </li>
+          <li>
+            <a href="/html/payments.html"
+              >Payments <i class="fas fa-money-bill"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/html/cards.html"
+              >Cards <i class="fas fa-credit-card"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/html/invoice.html"
+              >Invoicing <i class="fas fa-file-invoice"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#" id="logout-link" onclick="logout()"
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="mobile-nav">
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <ul class="menu">
+          <li>
+            <a href="/html/dashboard.html">Home <i class="fas fa-home"></i></a>
+          </li>
+          <li>
+            <a href="/html/payments.html"
+              >Transfers <i class="fas fa-money-bill"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/html/cards.html"
+              >Cards <i class="fas fa-credit-card"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/html/invoice.html"
+              >Invoicing <i class="fas fa-file-invoice"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#" id="logout-link" onclick="logout()"
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="payment-loader">
+      </div>
+      <section class="transfer hieght">
+        <div class="transfer-form">
+          <h2>Transfer Funds</h2>
+          <form>
+            <label for="account-select">Choose Account to Transfer From:</label>
+            <select id="account-select" name="account">
+              <option value="checking">Checking ($402,000.46)</option>
+              <option value="savings">Savings ($148,000.56)</option>
+            </select>
+
+            <label for="beneficiary-account">Beneficiary Account Number:</label>
+            <input type="text" id="beneficiary-account" name="beneficiary"
+            placeholder="Enter beneficiary account number" required
+            class="invalid" />
+
+            <label for="routing-number">Routing Number:</label>
+            <input type="text" id="routing-number" name="routing"
+            placeholder="Enter routing number" required />
+
+            <label for="beneficiary-bank">Beneficiary's Bank Name:</label>
+            <input type="text" id="beneficiary-bank" name="beneficiary-bank"
+            placeholder="Enter beneficiary's bank name" required />
+            <label for="beneficiary-name">Beneficiary's Name:</label>
+            <input type="text" id="beneficiary-name" name="beneficiary-name"
+            placeholder="Beneficiary's name" disabled required />
+
+            <label for="amount">Transaction Amount:</label>
+            <input type="text" id="transaction-amount" name="amount"  
+            placeholder="Enter transaction amount" required />
+
+            <label for="transaction-pin">Transaction PIN:</label>
+            <input type="password" id="transaction-pin" name="pin"
+            placeholder="Enter transaction PIN" required />
+
+            <!-- Add your other form fields here -->
+
+            <button type="submit" id="transfer-btn">Transfer</button>
+          </form>
+        </div>
+        <!-- Dialog element -->
+        <div id="dialog" class="dialog">
+          <div class="dialog-content">
+            <h2>Account Restricted</h2>
+            <p>
+              Hello Mary, your account has now been restricted due to suspected
+              illegal activity. Please visit any of our branches to unlock your
+              account.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function logout() {
+        // Find the logout link element
+        const logoutLink = document.getElementById("logout-link");
+
+        // Add the buffering animation class to the logout link
+        logoutLink.classList.add("logout-buffering");
+
+        // Disable the logout link to prevent multiple clicks
+        logoutLink.disabled = true;
+
+        // Simulate the logout process with a delay
+        setTimeout(() => {
+          // Redirect to the index.html page
+          window.location.href = "/index.html"; // Replace with the actual logout page URL
+        }, 10000); // Delay the redirect to simulate the logout process duration
+      }
+    </script>
+  </body>
+</html>

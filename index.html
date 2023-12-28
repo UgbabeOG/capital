@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/capital.css" />
+    <script src="/capital.js" defer></script>
+    <link
+      rel="shortcut icon"
+      href="/capitalAssets/favi.png"
+      type="image/x-icon"
+    />
+    <title>capital One||Home</title>
+
+    <style>
+      /* CSS styles for modal dialog */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+ 
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <label class="burger" for="burger" aria-controls="side-menu">
+          <input type="checkbox" id="burger" />
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <aside class="side-menu" aria-expanded="false" id="side-menu">
+          <div class="aside-menu">
+            Credit Cards <i class="fa fa-chevron-circle-right"></i
+            ><a href="#"></a>
+          </div>
+          <div class="aside-menu">
+            Checking & Savings<i class="fa fa-chevron-circle-right"></i
+            ><a href="#"></a>
+          </div>
+          <div class="aside-menu">
+            Auto<i class="fa fa-chevron-circle-right"></i><a href="#"></a>
+          </div>
+          <div class="aside-menu">
+            Business<i class="fa fa-chevron-circle-right"></i><a href="#"></a>
+          </div>
+          <div class="aside-menu">
+            Commercial<i class="fa fa-chevron-circle-right"></i><a href="#"></a>
+          </div>
+          <div class="aside-menu">
+            Learn & Grow<i class="fa fa-chevron-circle-right"></i
+            ><a href="#"></a>
+          </div>
+          <div class="aside-menu">
+            Help<i class="fa fa-chevron-circle-right"></i><a href="#"></a>
+          </div>
+          <div class="aside-menu">
+            Locations<i class="fa fa-chevron-circle-right"></i><a href="#"></a>
+          </div>
+        </aside>
+        <div class="logo">
+          <img src="/capitalAssets/capital one logo.png" alt="" />
+        </div>
+        <ul class="nav-list">
+          <li><a href="">Credit Cards</a></li>
+          <li><a href="">Checking & Savings</a></li>
+          <li><a href="">Auto</a></li>
+          <li><a href="">Business</a></li>
+          <li><a href="">Commercial</a></li>
+          <li><a href="">Learn & Grow</a></li>
+        </ul>
+        <div class="header-icons">
+          <i class="fa fa-search"></i><i class="fa fa-question-circle"></i
+          ><i class="fa fa-location-pin"></i>
+          <li class="fa fa-person"></li>
+          <span>Sign In</span>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="log-in">
+        <div class="login-">
+          <form action="login" class="login" id="login">
+            <div class="username">
+              <p>Username</p>
+              <input
+                type="text"
+                value=""
+                class="userInput"
+                id="userInput"
+                required
+              />
+              <div class="d">
+                <input type="checkbox" id="rememberMe" />
+                <span class="span">Remember Me</span>
+                <i
+                  class="fa fa-info-circle"
+                  title="Want this computer to remember your password? click this box. not recommended for shared computer"
+                ></i>
+              </div>
+            </div>
+            <div class="password">
+              <p>Password</p>
+              <input
+                type="password"
+                class="passwordInput"
+                id="password"
+                required
+              />
+              <div class="e">
+                <a href="" class="e">Forgot username or password?</a>
+              </div>
+            </div>
+            <div class="login-btn">
+              <input
+                type="button"
+                value="Sign In"
+                class="f"
+                id="loginBtn" onclick="checkLogin"
+              />
+            </div>
+          </form>
+        </div>
+
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Account Restricted</h2>
+            <p>
+              Sorry, Mary. Your account has been restricted. Please visit any of
+              our branches to resolve the issue.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="welcome"></section>
+      <section class="about">
+        <div class="card-container">
+          <div class="card-img">
+            <img
+              loading="lazy"
+              src="/capitalAssets/ehp-pa-callout-v2.svg"
+              alt=""
+            />
+          </div>
+          <div class="card-text">
+            <h3>No impact, no worries</h3>
+            <p>
+              Check if you're pre-approved for card offers with no impact to
+              your credit score.
+            </p>
+            <a href="">See if I'm Pre-Approved ></a>
+          </div>
+        </div>
+        <div class="card-container">
+          <div class="card-img">
+            <img
+              loading="lazy"
+              src="/capitalAssets/ehp_illustration_nationalsavingsday_e5.a_desktop-01.svg"
+              alt=""
+            />
+          </div>
+          <div class="card-text">
+            <h3>Savings starts here</h3>
+            <p>
+              Keep your money growing with one of the best savings rates in
+              America.
+            </p>
+            <a href="">Compare accounts ></a>
+          </div>
+        </div>
+        <div class="card-container">
+          <div class="card-img">
+            <img
+              src="/capitalAssets/autonavigator_272px---updated car.svg"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+          <div class="card-text">
+            <h3>Easier car buying</h3>
+            <p>
+              Pre-qualify to see your real rate and payment before visiting the
+              dealer.
+            </p>
+            <a href="">Check out Auto Navigator ></a>
+          </div>
+        </div>
+      </section>
+      <section class="help">
+        <h2 class="help-h2">HOW CAN WE HELP?</h2>
+        <div class="help-div">
+          <h3>
+            I want to
+            <input
+              type="text"
+              id="money"
+              list="function"
+              placeholder="grow my money"
+            />
+            <datalist id="function">
+              <option value="grow my money">grow my money</option>
+              <option value="prevent fraud">prevent fraud</option>
+              <option value="work on my credit">work on my credit</option>
+            </datalist>
+          </h3>
+          <h3>
+            so that I can
+            <input
+              type="text"
+              id="perform"
+              list="buy"
+              placeholder="buy a car"
+            />
+            <datalist id="buy">
+              <option value="buy a car">buy a car</option>
+              <option value="sleep better at night">
+                sleep better at night
+              </option>
+              <option value="help me feel secure">help me feel secure</option>
+              <option value="protect my future">protect my future</option>
+            </datalist>
+          </h3>
+          <p>We’ll offer ideas to help you meet your goal.</p>
+          <button>See Suggestions</button>
+        </div>
+      </section>
+      <section class="shoppers">
+        <div class="shopper-img">
+          <img
+            class="img"
+            loading="lazy"
+            src="/capitalAssets/Screenshotshopperimg.png"
+            alt=""
+          />
+        </div>
+        <div class="shopper-text">
+          <h3 class="header-">DEALS FOR SHOPPERS</h3>
+          <h3 class="title">
+            Automatically get better deals when you shop online
+          </h3>
+          <p>
+            Capital One Shopping is a free tool that instantly searches for
+            savings and applies them to your cart.
+          </p>
+          <a href="" class="shopper-link">Add Capital One Shopping</a>
+        </div>
+        <div class="wellness-img">
+          <img
+            class="img"
+            loading="lazy"
+            src="/capitalAssets/wellness.png"
+            alt=""
+          />
+        </div>
+        <div class="wellness-text">
+          <h3 class="header-">FINANCIAL WELLNESS</h3>
+          <h3 class="title">Put CreditWise in your pocket</h3>
+          <p>
+            Get help building your credit score and financial future with our
+            free app.
+          </p>
+          <a href="" class="shopper-link">Get started</a>
+        </div>
+      </section>
+      <section class="more">
+        <h3>WE'RE MORE THAN JUST A BANK</h3>
+        <div class="card-container">
+          <div class="more-cards">
+            <img src="/capitalAssets/dancing.png" alt="" loading="lazy" />
+            <div class="card-text">
+              <h4>Learn to manage your money to empower what you love</h4>
+              <p>
+                Get inspired with fresh tips on smart ways to manage, spend and
+                earn.
+              </p>
+            </div>
+          </div>
+          <div class="more-cards">
+            <img src="/capitalAssets/painting.png" alt="" loading="lazy" />
+            <div class="card-text">
+              <h4>Enabling communities to thrive</h4>
+              <p>
+                Our approach to ESG strives to address key issues facing
+                society.
+              </p>
+            </div>
+          </div>
+          <div class="more-cards">
+            <img
+              src="/capitalAssets/fatherandchild.png"
+              alt=""
+              loading="lazy"
+            />
+            <div class="card-text">
+              <h4>covid-19 Resources</h4>
+              <p>
+                See what resources are available to customers impacted by
+                COVID-19.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="faq">
+        <div class="faq-wrap">
+          <aside class="faq-container">
+            <h4 class="faq-question">
+              Products
+              <span class="faq-arrow">
+                <i class="fa fa-chevron-right"></i
+              ></span>
+            </h4>
+            <ul class="faq-answer">
+              <li><a href="#">Credit Cards</a></li>
+              <li><a href="#">Checking & Savings</a></li>
+              <li><a href="#">Auto</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Commercial</a></li>
+              <li><a href="#">Capital One Shopping</a></li>
+              <li><a href="#">CreditWise</a></li>
+            </ul>
+          </aside>
+          <aside class="faq-container">
+            <h4 class="faq-question">
+              Get to know us
+              <span class="faq-arrow">
+                <i class="fa fa-chevron-right"></i
+              ></span>
+            </h4>
+            <ul class="faq-answer">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Corporate Information</a></li>
+              <li><a href="#">Newsroom</a></li>
+              <li><a href="#">Technology</a></li>
+              <li><a href="#">Investors</a></li>
+              <li><a href="#">Careers & Jobs</a></li>
+              <li><a href="#">Diversity & Inclusion</a></li>
+              <li><a href="#">Canada</a></li>
+              <li><a href="#">UK</a></li>
+            </ul>
+          </aside>
+          <aside class="faq-container">
+            <h4 class="faq-question">
+              On The Go
+              <span class="faq-arrow">
+                <i class="fa fa-chevron-right"></i
+              ></span>
+            </h4>
+            <ul class="faq-answer">
+              <li><a href="#">Locations & ATMs</a></li>
+              <li><a href="#">Capital One Travel</a></li>
+              <li><a href="#">Mobile App</a></li>
+              <li><a href="#">Meet Eno</a></li>
+              <li><a href="#">Digital Payments</a></li>
+            </ul>
+          </aside>
+          <aside class="faq-container">
+            <h4 class="faq-question">
+              Legal
+              <span class="faq-arrow">
+                <i class="fa fa-chevron-right"></i
+              ></span>
+            </h4>
+            <ul class="faq-answer">
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Patriot Act Certification</a></li>
+              <li><a href="#">Wolfsberg Questionnaire</a></li>
+              <li><a href="#">Subpoena Policy</a></li>
+              <li><a href="#">Additional Disclosures</a></li>
+            </ul>
+          </aside>
+          <aside class="faq-container">
+            <h4 class="faq-question">
+              Support
+              <span class="faq-arrow">
+                <i class="fa fa-chevron-right"></i
+              ></span>
+            </h4>
+            <ul class="faq-answer">
+              <li><a href="#">COVID-19</a></li>
+              <li><a href="#">2019 Cyber Incident</a></li>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Learn &amp; Grow</a></li>
+              <li><a href="#">Resources for Military</a></li>
+              <li><a href="#">Accessibility Assistance</a></li>
+              <li><a href="#">Tweet @AskCapitalOne</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </aside>
+        </div>
+        <div class="social-media-wrapper">
+          <div class="social-media">
+            <i class="fa fa-instagram-square m"></i>
+            <i class="fa fa-twitter-square m"></i
+            ><i class="fa fa-facebook-square m"></i
+            ><i class="fa-linkedin-in m"></i
+            ><i class="fa fa-youtube-square m"></i>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <section class="footnotes">
+          <h4>Footnotes</h4>
+          <h5>Learn more about <a href="#">FDIC insurance coverage.</a></h5>
+          <p>
+            Mastercard® is a registered trademark, and the circles design is a
+            trademark of Mastercard International Incorporated.
+          </p>
+          <ol class="footer-list">
+            <li>
+              This product finder tool is informational and educational only and
+              strictly meant to provide an overview of Capital One product
+              offerings based on self-selected user goals. Its results do not
+              constitute financial or investment advice.
+            </li>
+            <li>
+              CreditWise availability will vary depending on ability to obtain
+              your credit history from TransUnion®.
+            </li>
+          </ol>
+        </section>
+        <div class="footerlinks">
+          <div class="copyright">©2023 Capital One</div>
+          <div class="links">
+            <span class="link">Privacy</span><span class="link">Security </span
+            ><span class="link">AdChoices </span
+            ><span class="link">Terms & Conditions</span>
+          </div>
+          <div class="fdic">
+            Equal Housing Opportunity <i class="fa fa-house"></i>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <script defer>
+      // Get the modal element
+      var modal = document.getElementById("myModal");
+
+      // Get the <span> element that closes the modal
+      var closeBtn = document.getElementsByClassName("close")[0];
+
+      // Counter for login attempts
+      var loginAttempts = 0;
+
+      // Function to check login
+      function checkLogin() {
+        // Get the entered username and password
+        var username = document.getElementById("userInput").value;
+        var password = document.getElementById("password").value;
+
+        // Check if the username and password are correct
+        if (username === "Missmaria" && password === "Mexicanpeso") {
+          // Redirect to dashboard.html
+          window.location.href = "/html/dashboard.html";
+        } else {
+          // Incorrect password, increment login attempts
+          loginAttempts++;
+
+          // Check if login attempts exceed the threshold (3)
+          if (loginAttempts >= 3) {
+            // Display the modal dialog
+            modal.style.display = "block";
+          } else {
+            // Show incorrect password message
+            alert("Incorrect password. Please try again.");
+          }
+        }
+      }
+
+      // Function to close the modal dialog
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      // Event listener for the login button
+    const login =  document
+        .getElementById("loginBtn");
+       login.addEventListener("click", checkLogin);
+
+      // Event listener for the close button of the modal
+      closeBtn.addEventListener("click", closeModal);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Capital One</title>
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script src="/js/dashboard.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <ul>
+          <li>
+            <a href="/html/dashboard.html">Home <i class="fas fa-home"></i></a>
+          </li>
+          <li>
+            <a href="/html/payments.html"
+              >Payments <i class="fas fa-money-bill"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/html/cards.html"
+              >Cards <i class="fas fa-credit-card"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/html/invoice.html"
+              >Invoicing <i class="fas fa-file-invoice"></i
+            ></a>
+          </li>
+          <li>
+            <a  id="logout-link" 
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav">
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon"
+          ><i class="fas fa-bars"></i
+        ></label>
+        <ul class="menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="/html/payments.html">Transfer</a></li>
+          <li><a href="/html/cards.html">Cards</a></li>
+          <li><a href="/html/invoice.html">Invoicing</a></li>
+          <li>
+            <a href="#" id="logout-link" 
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <section class="dashboard">
+        <h1>Welcome back, Mary Ospinar!</h1>
+        <!-- Include the dashboard content here -->
+      </section>
+
+      <section class="balances">
+        <div class="balance-box">
+          <h2>Checking Balance</h2>
+          <p>$402,000.46</p>
+        </div>
+
+        <div class="balance-box">
+          <h2>Savings Balance</h2>
+          <p>$148,000.56</p>
+        </div>
+      </section>
+
+      <section class="date-range">
+        <div class="date-box">
+          <i class="fas fa-calendar"></i>
+          <p>May 17, 2020 - <span class="period" ></span></p>
+        </div>
+      </section>
+
+      <section class="financial-summary">
+        <div class="summary-box">
+          <h2>Income this period</h2>
+          <p>$20,000.00</p>
+        </div>
+
+        <div class="summary-box">
+          <h2>Outflow this period</h2>
+          <p>$5,000.34</p>
+        </div>
+
+        <div class="summary-box">
+          <h2>Net cash this period</h2>
+          <p>$14,999.66</p>
+        </div>
+      </section>
+      <section class="transaction-history">
+        <h2>Transaction History</h2>
+
+        <div class="transaction-box deduction-box">
+          <h3>Transactions</h3>
+          <ul>
+            <li>
+              <span class="transaction-date">June 15, 2023</span>
+              <span class="transaction-description">deposit</span>
+              <span class="transaction-amount">-$640,000.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 9, 2023</span>
+              <span class="transaction-description">Bill Payment</span>
+              <span class="transaction-amount">-$500.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 8, 2023</span>
+              <span class="transaction-description">Rent</span>
+              <span class="transaction-amount">-$1,200.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 7, 2023</span>
+              <span class="transaction-description">Credit Card Payment</span>
+              <span class="transaction-amount">-$800.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 6, 2023</span>
+              <span class="transaction-description">Grocery Shopping</span>
+              <span class="transaction-amount">-$150.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 5, 2023</span>
+              <span class="transaction-description">Utility Bill</span>
+              <span class="transaction-amount">-$300.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 4, 2023</span>
+              <span class="transaction-description">Salary Deposit</span>
+              <span class="transaction-amount">+$5,000.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 3, 2023</span>
+              <span class="transaction-description">Interest Received</span>
+              <span class="transaction-amount">+$100.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 2, 2023</span>
+              <span class="transaction-description">Refund</span>
+              <span class="transaction-amount">+$300.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">June 1, 2023</span>
+              <span class="transaction-description">Investment Income</span>
+              <span class="transaction-amount">+$1,500.00</span>
+            </li>
+            <li>
+              <span class="transaction-date">May 31, 2023</span>
+              <span class="transaction-description">Gift Received</span>
+              <span class="transaction-amount">+$50.00</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="invoice-summary">
+        <h2>Invoice Summary</h2>
+
+        <div class="invoice-box">
+          <h3>Invoice List</h3>
+          <ul>
+            <!-- Check if there are no invoices to show -->
+            <!-- If no invoices, display "No invoices to show" -->
+            <li>
+              <span class="invoice-status">No invoices to show</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <canvas id="transactionChart"></canvas>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <!-- Include the footer content here -->
+    </footer>
+
+    <script>
+      // Fetch the transaction data (replace with your actual data)
+      const transactions = [
+        2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000,
+      ];
+
+      // Create a function to generate exponential data based on transaction amounts
+      function generateExponentialData(data) {
+        const exponentialData = [];
+        let previousValue = data[0];
+
+        for (let i = 0; i < data.length; i++) {
+          const value = previousValue * 2; // Change the exponential growth factor as needed
+          exponentialData.push(value);
+          previousValue = value;
+        }
+
+        return exponentialData;
+      }
+
+      // Generate exponential data based on the transaction amounts
+      const exponentialData = generateExponentialData(transactions);
+
+      // Create the chart using Chart.js
+      const ctx = document.getElementById("transactionChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9"], // Replace with appropriate labels
+          datasets: [
+            {
+              label: "Transaction Amount",
+              data: transactions,
+              borderColor: "blue",
+              backgroundColor: "transparent",
+            },
+            {
+              label: "Exponential Growth",
+              data: exponentialData,
+              borderColor: "green",
+              backgroundColor: "transparent",
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Transaction Amount",
+              },
+            },
+            x: {
+              title: {
+                display: true,
+                text: "Period",
+              },
+            },
+          },
+        },
+      });
+    </script>
+
+   
+  </body>
+</html>
