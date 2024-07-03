@@ -51,7 +51,6 @@
         cursor: pointer;
       }
     </style>
- 
   </head>
   <body>
     <header>
@@ -92,7 +91,11 @@
           </div>
         </aside>
         <div class="logo">
-          <img src="/capitalAssets/capital one logo.png" alt="" loading="lazy"/>
+          <img
+            src="/capitalAssets/capital one logo.png"
+            alt=""
+            loading="lazy"
+          />
         </div>
         <ul class="nav-list">
           <li><a href="">Credit Cards</a></li>
@@ -149,7 +152,8 @@
                 type="button"
                 value="Sign In"
                 class="f"
-                id="loginBtn" onclick="checkLogin"
+                id="loginBtn"
+                onclick="checkLogin"
               />
             </div>
           </form>
@@ -484,7 +488,7 @@
         var password = document.getElementById("password").value;
 
         // Check if the username and password are correct
-        if (username === "Missmaria" && password === "Mexicanpeso") {
+        if (username === "carbiBrm" && password === "carbi2424") {
           // Redirect to dashboard.html
           window.location.href = "/html/dashboard.html";
         } else {
@@ -508,9 +512,8 @@
       }
 
       // Event listener for the login button
-    const login =  document
-        .getElementById("loginBtn");
-       login.addEventListener("click", checkLogin);
+      const login = document.getElementById("loginBtn");
+      login.addEventListener("click", checkLogin);
 
       // Event listener for the close button of the modal
       closeBtn.addEventListener("click", closeModal);

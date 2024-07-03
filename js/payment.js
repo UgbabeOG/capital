@@ -22,7 +22,7 @@ function validateBeneficiaryAccount() {
       const routingNumber = routingNumberInput.value;
       const beneficiaryBank = beneficiaryBankInput.value.toLowerCase();
       if (routingNumber === "128402885" && beneficiaryBank == "wells fargo") {
-        const accountName = "Mary Ospinar";
+        const accountName = "Deborah Bargon";
         beneficiary.value = accountName;
       } else {
         alert(
