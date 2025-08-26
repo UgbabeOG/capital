@@ -21,7 +21,7 @@ function validateBeneficiaryAccount() {
     setTimeout(() => {
       const routingNumber = routingNumberInput.value;
       const beneficiaryBank = beneficiaryBankInput.value.toLowerCase();
-      if (routingNumber === "128402885" && beneficiaryBank == "wellsI fargo") {
+      if (routingNumber === "128402885" && beneficiaryBank == "wells fargo") {
         const accountName = "Philip Bargon";
         beneficiary.value = accountName;
       } else {
