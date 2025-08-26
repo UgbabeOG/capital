@@ -35,6 +35,11 @@ header {
   background-color: #00275e;
   padding: 1rem;
 }
+.logo {
+  margin-left: 3rem;
+  height: 2.75rem;
+  border-radius: 4px;
+}
 
 nav ul {
   list-style: none;
@@ -53,7 +58,8 @@ nav ul li a {
   transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover {color: #faf8f8;
+nav ul li a:hover {
+  color: #faf8f8;
   background-color: #0046a1;
 }
 
