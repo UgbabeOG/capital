@@ -77,6 +77,23 @@
         cursor: pointer;
         margin-top: 15px;
       }
+
+      /* Loading Spinner */
+      .loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
     </style>
   </head>
   <body>
@@ -174,30 +191,12 @@
                 <a href="" class="e">Forgot username or password?</a>
               </div>
             </div>
-            <div class="otp" id="otpDiv" style="display: none;">
-              <p>OTP</p>
-              <input
-                type="text"
-                class="otpInput"
-                id="otpInput"
-                required
-              />
-              <div id="otp-countdown"></div>
-            </div>
             <div class="login-btn">
               <input
                 type="button"
                 value="Sign In"
                 class="f"
                 id="loginBtn"
-              />
-            </div>
-            <div class="login-btn" id="otpBtnDiv" style="display: none;">
-              <input
-                type="button"
-                value="Request OTP"
-                class="f"
-                id="requestOtpBtn"
               />
             </div>
           </form>
@@ -213,14 +212,40 @@
             </p>
           </div>
         </div>
+
+        <div id="loadingModal" class="modal">
+            <div class="modal-content">
+                <div class="loader"></div>
+                <p>Loading...</p>
+            </div>
+        </div>
+
         <div id="otpModal" class="modal">
           <div class="modal-content">
             <span class="close-otp">&times;</span>
             <h2>OTP Sent</h2>
             <p>An OTP has been sent to your registered email address.</p>
-            <button class="close-otp-btn">Close</button>
+            <div class="otp" id="otpDiv">
+                <p>OTP</p>
+                <input
+                  type="text"
+                  class="otpInput"
+                  id="otpInput"
+                  required
+                />
+                <div id="otp-countdown"></div>
+            </div>
+            <div class="login-btn" id="otpBtnDiv">
+                <input
+                  type="button"
+                  value="Verify OTP"
+                  class="f"
+                  id="verifyOtpBtn"
+                />
+            </div>
           </div>
         </div>
+
       </section>
 
       <section class="welcome"></section>
@@ -524,14 +549,14 @@
       </footer>
     </main>
     <script defer>
-      // Get the modal element
+      // Get the modal elements
       var modal = document.getElementById("myModal");
+      var loadingModal = document.getElementById("loadingModal");
       var otpModal = document.getElementById("otpModal");
 
       // Get the <span> element that closes the modal
       var closeBtn = document.getElementsByClassName("close")[0];
       var closeOtpBtn = document.getElementsByClassName("close-otp")[0];
-      var closeOtpBtn2 = document.getElementsByClassName("close-otp-btn")[0];
 
       // Counter for login attempts
       var loginAttempts = 0;
@@ -542,9 +567,14 @@
         var password = document.getElementById("password").value;
 
         if (username === "BidwellsBri" && password === "Lovely2378") {
-          document.getElementById("otpDiv").style.display = "block";
-          document.getElementById("otpBtnDiv").style.display = "block";
-          document.getElementById("loginBtn").style.display = "none";
+          // Show loading modal
+          loadingModal.style.display = "block";
+
+          setTimeout(function() {
+            loadingModal.style.display = "none";
+            requestOtp();
+          }, 2000); // Simulate a network request
+
         } else {
           alert("Incorrect username or password. Please try again.");
         }
@@ -570,31 +600,35 @@
           if (timeLeft <= 0) {
             clearInterval(countdownInterval);
             countdownElement.textContent = "OTP expired";
-            // Optionally, handle OTP expiry
           }
         }, 1000);
-
-        // Change the button to "Verify OTP"
-        var requestOtpBtn = document.getElementById("requestOtpBtn");
-        requestOtpBtn.value = "Verify OTP";
-        requestOtpBtn.onclick = verifyOtp;
       }
 
       function verifyOtp() {
         var enteredOtp = document.getElementById("otpInput").value;
-        if (enteredOtp == window.mockOtp) {
-          // Redirect to dashboard.html
-          window.location.href = "/html/dashboard.html";
-        } else {
-          // Incorrect OTP
-          loginAttempts++;
-          if (loginAttempts >= 3) {
-            // Display the modal dialog
-            modal.style.display = "block";
-          } else {
-            alert("Incorrect OTP. Please try again.");
-          }
-        }
+        
+        // Show loading modal
+        loadingModal.style.display = "block";
+        otpModal.style.display = "none";
+
+        setTimeout(function() {
+            loadingModal.style.display = "none";
+            if (enteredOtp == window.mockOtp) {
+              // Redirect to dashboard.html
+              window.location.href = "/html/dashboard.html";
+            } else {
+              // Incorrect OTP
+              loginAttempts++;
+              if (loginAttempts >= 3) {
+                // Display the modal dialog
+                modal.style.display = "block";
+              } else {
+                alert("Incorrect OTP. Please try again.");
+                otpModal.style.display = "block";
+              }
+            }
+        }, 2000); // Simulate a network request
+
       }
 
       // Function to close the modal dialog
@@ -610,14 +644,14 @@
       const login = document.getElementById("loginBtn");
       login.addEventListener("click", checkLogin);
 
-      // Event listener for the request OTP button
-      const requestOtpBtn = document.getElementById("requestOtpBtn");
-      requestOtpBtn.addEventListener("click", requestOtp);
+      // Event listener for the verify OTP button
+      const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+      verifyOtpBtn.addEventListener("click", verifyOtp);
 
       // Event listener for the close button of the modal
       closeBtn.addEventListener("click", closeModal);
       closeOtpBtn.addEventListener("click", closeOtpModal);
-      closeOtpBtn2.addEventListener("click", closeOtpModal);
+
     </script>
   </body>
 </html>
