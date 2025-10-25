@@ -34,6 +34,7 @@
         width: 80%;
         max-width: 400px;
         text-align: center;
+        border-radius: 5px;
       }
 
       .close {
@@ -49,6 +50,16 @@
         color: black;
         text-decoration: none;
         cursor: pointer;
+      }
+      
+      #otpModal .modal-content {
+        background-color: #fff;
+        border: 1px solid #004c7f;
+        color: #004c7f;
+      }
+
+      #otpModal h2 {
+          color: #004c7f;
       }
     </style>
   </head>
@@ -183,6 +194,13 @@
               Sorry, Amber. Your account has been restricted. Please visit any
               of our branches to resolve the issue.
             </p>
+          </div>
+        </div>
+        <div id="otpModal" class="modal">
+          <div class="modal-content">
+            <h2>OTP Sent</h2>
+            <p>An OTP has been sent to your registered email address.</p>
+            <p>Time remaining: <span id="countdown">60</span>s</p>
           </div>
         </div>
       </section>
@@ -490,6 +508,7 @@
     <script defer>
       // Get the modal element
       var modal = document.getElementById("myModal");
+      var otpModal = document.getElementById("otpModal");
 
       // Get the <span> element that closes the modal
       var closeBtn = document.getElementsByClassName("close")[0];
@@ -514,9 +533,26 @@
       function requestOtp() {
         // Mock OTP generation
         var otp = 262276;
-        alert("Your OTP is: " + otp);
+        
         // For the purpose of this mock, we'll store it in a variable.
         window.mockOtp = otp;
+
+        // Show the OTP modal
+        otpModal.style.display = "block";
+
+        // Start the countdown
+        var timeLeft = 60;
+        var countdownElement = document.getElementById("countdown");
+        countdownElement.textContent = timeLeft;
+        var countdownInterval = setInterval(function() {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                otpModal.style.display = "none";
+                // Optionally, handle OTP expiry
+            }
+        }, 1000);
 
         // Change the button to "Verify OTP"
         var requestOtpBtn = document.getElementById("requestOtpBtn");
