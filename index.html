@@ -61,6 +61,12 @@
       #otpModal h2 {
           color: #004c7f;
       }
+
+      #otp-countdown {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #555;
+      }
     </style>
   </head>
   <body>
@@ -166,6 +172,7 @@
                 id="otpInput"
                 required
               />
+              <div id="otp-countdown"></div>
             </div>
             <div class="login-btn">
               <input
@@ -198,9 +205,9 @@
         </div>
         <div id="otpModal" class="modal">
           <div class="modal-content">
+            <span class="close-otp">&times;</span>
             <h2>OTP Sent</h2>
             <p>An OTP has been sent to your registered email address.</p>
-            <p>Time remaining: <span id="countdown">60</span>s</p>
           </div>
         </div>
       </section>
@@ -512,6 +519,7 @@
 
       // Get the <span> element that closes the modal
       var closeBtn = document.getElementsByClassName("close")[0];
+      var closeOtpBtn = document.getElementsByClassName("close-otp")[0];
 
       // Counter for login attempts
       var loginAttempts = 0;
@@ -542,14 +550,14 @@
 
         // Start the countdown
         var timeLeft = 60;
-        var countdownElement = document.getElementById("countdown");
-        countdownElement.textContent = timeLeft;
+        var countdownElement = document.getElementById("otp-countdown");
+        countdownElement.textContent = `Time remaining: ${timeLeft}s`;
         var countdownInterval = setInterval(function() {
             timeLeft--;
-            countdownElement.textContent = timeLeft;
+            countdownElement.textContent = `Time remaining: ${timeLeft}s`;
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
-                otpModal.style.display = "none";
+                countdownElement.textContent = "OTP expired";
                 // Optionally, handle OTP expiry
             }
         }, 1000);
@@ -582,6 +590,10 @@
         modal.style.display = "none";
       }
 
+      function closeOtpModal() {
+        otpModal.style.display = "none";
+      }
+
       // Event listener for the login button
       const login = document.getElementById("loginBtn");
       login.addEventListener("click", checkLogin);
@@ -592,6 +604,7 @@
 
       // Event listener for the close button of the modal
       closeBtn.addEventListener("click", closeModal);
+      closeOtpBtn.addEventListener("click", closeOtpModal);
     </script>
   </body>
 </html>
