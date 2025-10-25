@@ -51,7 +51,7 @@
         text-decoration: none;
         cursor: pointer;
       }
-      
+
       #otpModal .modal-content {
         background-color: #fff;
         border: 1px solid #004c7f;
@@ -59,13 +59,23 @@
       }
 
       #otpModal h2 {
-          color: #004c7f;
+        color: #004c7f;
       }
 
       #otp-countdown {
         margin-top: 10px;
         font-size: 0.9rem;
         color: #555;
+      }
+
+      .close-otp-btn {
+        background-color: #0076c0;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 15px;
       }
     </style>
   </head>
@@ -208,6 +218,7 @@
             <span class="close-otp">&times;</span>
             <h2>OTP Sent</h2>
             <p>An OTP has been sent to your registered email address.</p>
+            <button class="close-otp-btn">Close</button>
           </div>
         </div>
       </section>
@@ -520,6 +531,7 @@
       // Get the <span> element that closes the modal
       var closeBtn = document.getElementsByClassName("close")[0];
       var closeOtpBtn = document.getElementsByClassName("close-otp")[0];
+      var closeOtpBtn2 = document.getElementsByClassName("close-otp-btn")[0];
 
       // Counter for login attempts
       var loginAttempts = 0;
@@ -541,7 +553,7 @@
       function requestOtp() {
         // Mock OTP generation
         var otp = 262276;
-        
+
         // For the purpose of this mock, we'll store it in a variable.
         window.mockOtp = otp;
 
@@ -552,14 +564,14 @@
         var timeLeft = 60;
         var countdownElement = document.getElementById("otp-countdown");
         countdownElement.textContent = `Time remaining: ${timeLeft}s`;
-        var countdownInterval = setInterval(function() {
-            timeLeft--;
-            countdownElement.textContent = `Time remaining: ${timeLeft}s`;
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval);
-                countdownElement.textContent = "OTP expired";
-                // Optionally, handle OTP expiry
-            }
+        var countdownInterval = setInterval(function () {
+          timeLeft--;
+          countdownElement.textContent = `Time remaining: ${timeLeft}s`;
+          if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            countdownElement.textContent = "OTP expired";
+            // Optionally, handle OTP expiry
+          }
         }, 1000);
 
         // Change the button to "Verify OTP"
@@ -605,6 +617,7 @@
       // Event listener for the close button of the modal
       closeBtn.addEventListener("click", closeModal);
       closeOtpBtn.addEventListener("click", closeOtpModal);
+      closeOtpBtn2.addEventListener("click", closeOtpModal);
     </script>
   </body>
 </html>
