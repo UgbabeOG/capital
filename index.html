@@ -147,13 +147,29 @@
                 <a href="" class="e">Forgot username or password?</a>
               </div>
             </div>
+            <div class="otp" id="otpDiv" style="display: none;">
+              <p>OTP</p>
+              <input
+                type="text"
+                class="otpInput"
+                id="otpInput"
+                required
+              />
+            </div>
             <div class="login-btn">
               <input
                 type="button"
                 value="Sign In"
                 class="f"
                 id="loginBtn"
-                onclick="checkLogin"
+              />
+            </div>
+            <div class="login-btn" id="otpBtnDiv" style="display: none;">
+              <input
+                type="button"
+                value="Request OTP"
+                class="f"
+                id="requestOtpBtn"
               />
             </div>
           </form>
@@ -260,7 +276,7 @@
             </datalist>
           </h3>
           <p>We’ll offer ideas to help you meet your goal.</p>
-          <button>See Suggestions</button>
+          <button>See suggestions</button>
         </div>
       </section>
       <section class="shoppers">
@@ -483,25 +499,44 @@
 
       // Function to check login
       function checkLogin() {
-        // Get the entered username and password
         var username = document.getElementById("userInput").value;
         var password = document.getElementById("password").value;
 
-        // Check if the username and password are correct
-        if (username === "AmberReed" && password === "1heart2Luv") {
+        if (username === "BidwellsBri" && password === "Lovely2378") {
+          document.getElementById("otpDiv").style.display = "block";
+          document.getElementById("otpBtnDiv").style.display = "block";
+          document.getElementById("loginBtn").style.display = "none";
+        } else {
+          alert("Incorrect username or password. Please try again.");
+        }
+      }
+
+      function requestOtp() {
+        // Mock OTP generation
+        var otp = 262276;
+        alert("Your OTP is: " + otp);
+        // For the purpose of this mock, we'll store it in a variable.
+        window.mockOtp = otp;
+
+        // Change the button to "Verify OTP"
+        var requestOtpBtn = document.getElementById("requestOtpBtn");
+        requestOtpBtn.value = "Verify OTP";
+        requestOtpBtn.onclick = verifyOtp;
+      }
+
+      function verifyOtp() {
+        var enteredOtp = document.getElementById("otpInput").value;
+        if (enteredOtp == window.mockOtp) {
           // Redirect to dashboard.html
           window.location.href = "/html/dashboard.html";
         } else {
-          // Incorrect password, increment login attempts
+          // Incorrect OTP
           loginAttempts++;
-
-          // Check if login attempts exceed the threshold (3)
           if (loginAttempts >= 3) {
             // Display the modal dialog
             modal.style.display = "block";
           } else {
-            // Show incorrect password message
-            alert("Incorrect password. Please try again.");
+            alert("Incorrect OTP. Please try again.");
           }
         }
       }
@@ -515,9 +550,12 @@
       const login = document.getElementById("loginBtn");
       login.addEventListener("click", checkLogin);
 
+      // Event listener for the request OTP button
+      const requestOtpBtn = document.getElementById("requestOtpBtn");
+      requestOtpBtn.addEventListener("click", requestOtp);
+
       // Event listener for the close button of the modal
       closeBtn.addEventListener("click", closeModal);
     </script>
   </body>
 </html>
-
