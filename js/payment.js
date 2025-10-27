@@ -15,9 +15,10 @@ transferBtn.addEventListener("click", handleTransfer);
 function validateBeneficiaryAccount() {
   const beneficiaryAccountNumber = beneficiaryAccountInput.value;
 
-  if (beneficiaryAccountNumber.length !== 13) {
+  if (beneficiaryAccountNumber.length < 6) {
     alert("invalid account number entered");
-  } else {
+  }
+/*  else {
     setTimeout(() => {
       const routingNumber = routingNumberInput.value;
       const beneficiaryBank = beneficiaryBankInput.value.toLowerCase();
@@ -29,7 +30,7 @@ function validateBeneficiaryAccount() {
           "Account name could not be found. Please verify routing & account number and try again."
         );
       }
-    }, 2000);
+    }, 2000);*/
   }
 }
 
@@ -68,3 +69,4 @@ function showAccountRestrictedDialog() {
   }, 4000);
 }
 //done
+
