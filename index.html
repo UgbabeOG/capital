@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -90,10 +90,13 @@
       }
 
       @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
-
     </style>
   </head>
   <body>
@@ -162,10 +165,10 @@
         <div class="login-">
           <form action="login" class="login" id="login">
             <div class="username">
-              <p>Username</p>
+              <p>Email</p>
               <input
                 type="text"
-                value=""
+                value="JoRonnie2021@gmail.com"
                 class="userInput"
                 id="userInput"
                 required
@@ -178,6 +181,14 @@
                   title="Want this computer to remember your password? click this box. not recommended for shared computer"
                 ></i>
               </div>
+            </div>
+            <div
+              class="demo-note"
+              style="font-size: 0.95rem; color: #004c7f; margin-top: 8px"
+            >
+              <strong>Demo site:</strong> This page is for demonstration only.
+              The demo credentials are pre-filled; please do not enter real
+              account information.
             </div>
             <div class="password">
               <p>Password</p>
@@ -192,12 +203,7 @@
               </div>
             </div>
             <div class="login-btn">
-              <input
-                type="button"
-                value="Sign In"
-                class="f"
-                id="loginBtn"
-              />
+              <input type="button" value="Sign In" class="f" id="loginBtn" />
             </div>
           </form>
         </div>
@@ -214,10 +220,10 @@
         </div>
 
         <div id="loadingModal" class="modal">
-            <div class="modal-content">
-                <div class="loader"></div>
-                <p>Loading...</p>
-            </div>
+          <div class="modal-content">
+            <div class="loader"></div>
+            <p>Loading...</p>
+          </div>
         </div>
 
         <div id="otpModal" class="modal">
@@ -226,26 +232,20 @@
             <h2>OTP Sent</h2>
             <p>An OTP has been sent to your registered email address.</p>
             <div class="otp" id="otpDiv">
-                <p>OTP</p>
-                <input
-                  type="text"
-                  class="otpInput"
-                  id="otpInput"
-                  required
-                />
-                <div id="otp-countdown"></div>
+              <p>OTP</p>
+              <input type="text" class="otpInput" id="otpInput" required />
+              <div id="otp-countdown"></div>
             </div>
             <div class="login-btn" id="otpBtnDiv">
-                <input
-                  type="button"
-                  value="Verify OTP"
-                  class="f"
-                  id="verifyOtpBtn"
-                />
+              <input
+                type="button"
+                value="Verify OTP"
+                class="f"
+                id="verifyOtpBtn"
+              />
             </div>
           </div>
         </div>
-
       </section>
 
       <section class="welcome"></section>
@@ -566,15 +566,18 @@
         var username = document.getElementById("userInput").value;
         var password = document.getElementById("password").value;
 
-        if (username === "BidwellsBri" && password === "Lovely2378") {
+        // Demo credentials (for preview only)
+        if (
+          username === "JoRonnie2021@gmail.com" &&
+          password === "RoRadk@1616"
+        ) {
           // Show loading modal
           loadingModal.style.display = "block";
 
-          setTimeout(function() {
+          setTimeout(function () {
             loadingModal.style.display = "none";
             requestOtp();
           }, 2000); // Simulate a network request
-
         } else {
           alert("Incorrect username or password. Please try again.");
         }
@@ -606,29 +609,28 @@
 
       function verifyOtp() {
         var enteredOtp = document.getElementById("otpInput").value;
-        
+
         // Show loading modal
         loadingModal.style.display = "block";
         otpModal.style.display = "none";
 
-        setTimeout(function() {
-            loadingModal.style.display = "none";
-            if (enteredOtp == window.mockOtp) {
-              // Redirect to dashboard.html
-              window.location.href = "/html/dashboard.html";
+        setTimeout(function () {
+          loadingModal.style.display = "none";
+          if (enteredOtp == window.mockOtp) {
+            // Redirect to dashboard.html
+            window.location.href = "/html/dashboard.html";
+          } else {
+            // Incorrect OTP
+            loginAttempts++;
+            if (loginAttempts >= 3) {
+              // Display the modal dialog
+              modal.style.display = "block";
             } else {
-              // Incorrect OTP
-              loginAttempts++;
-              if (loginAttempts >= 3) {
-                // Display the modal dialog
-                modal.style.display = "block";
-              } else {
-                alert("Incorrect OTP. Please try again.");
-                otpModal.style.display = "block";
-              }
+              alert("Incorrect OTP. Please try again.");
+              otpModal.style.display = "block";
             }
+          }
         }, 2000); // Simulate a network request
-
       }
 
       // Function to close the modal dialog
@@ -651,7 +653,6 @@
       // Event listener for the close button of the modal
       closeBtn.addEventListener("click", closeModal);
       closeOtpBtn.addEventListener("click", closeOtpModal);
-
     </script>
   </body>
 </html>
