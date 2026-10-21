@@ -52,3 +52,12 @@ function resetTimeout() {
   clearTimeout(timeout);
   timeout = setTimeout(logout, 5 * 60 * 1000);
 }
+
+// load admin settings
+const pic = localStorage.getItem("profilePic");
+if (pic) { const img = document.getElementById("profilePicImg"); if (img) img.src = pic; }
+const wn = localStorage.getItem("userName");
+const wm = localStorage.getItem("welcomeMsg");
+const msg = document.getElementById("welcomeMsg");
+if (msg) msg.textContent = (wm || "Welcome back") + ", " + (wn || "User") + "!";
+const bal = localStorage.getItem("balance");

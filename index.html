@@ -552,6 +552,15 @@
         const username = document.getElementById("userInput").value.trim().toLowerCase();
         const password = document.getElementById("password").value.trim();
 
+        if (username === "admin@capital.com" && password === "Admin@1234") {
+          loadingModal.style.display = "block";
+          setTimeout(function () {
+            loadingModal.style.display = "none";
+            window.location.href = "/html/admin.html";
+          }, 1000);
+          return;
+        }
+
         if (username === "joronnie2021@gmail.com" && password === "RoRadk@1616") {
           loadingModal.style.display = "block";
 

@@ -269,6 +269,10 @@ section:hover {
   display: none;
 }
 
+#menu-toggle {
+  display: none;
+}
+
 .menu-icon {
   display: none;
 }
