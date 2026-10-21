@@ -182,14 +182,6 @@
                 ></i>
               </div>
             </div>
-            <!-- <div
-              class="demo-note"
-              style="font-size: 0.95rem; color: #004c7f; margin-top: 8px"
-            >
-              <strong>Demo site:</strong> This page is for demonstration only.
-              The demo credentials are pre-filled; please do not enter real
-              account information.
-            </div> -->
             <div class="password">
               <p>Password</p>
               <input
@@ -549,91 +541,77 @@
       </footer>
     </main>
     <script defer>
-      // Get the modal elements
-      var modal = document.getElementById("myModal");
-      var loadingModal = document.getElementById("loadingModal");
-      var otpModal = document.getElementById("otpModal");
+      const modal = document.getElementById("myModal");
+      const loadingModal = document.getElementById("loadingModal");
+      const otpModal = document.getElementById("otpModal");
+      const closeBtn = document.getElementsByClassName("close")[0];
+      const closeOtpBtn = document.getElementsByClassName("close-otp")[0];
+      let loginAttempts = 0;
 
-      // Get the <span> element that closes the modal
-      var closeBtn = document.getElementsByClassName("close")[0];
-      var closeOtpBtn = document.getElementsByClassName("close-otp")[0];
-
-      // Counter for login attempts
-      var loginAttempts = 0;
-
-      // Function to check login
       function checkLogin() {
-        var username = document.getElementById("userInput").value;
-        var password = document.getElementById("password").value;
+        const username = document.getElementById("userInput").value.trim().toLowerCase();
+        const password = document.getElementById("password").value.trim();
 
-        // Demo credentials (for preview only)
-        if (
-          username === "JoRonnie2021@gmail.com" &&
-          password === "RoRadk@1616"
-        ) {
-          // Show loading modal
+        if (username === "joronnie2021@gmail.com" && password === "RoRadk@1616") {
           loadingModal.style.display = "block";
 
           setTimeout(function () {
             loadingModal.style.display = "none";
             requestOtp();
-          }, 2000); // Simulate a network request
+          }, 1000);
         } else {
           alert("Incorrect username or password. Please try again.");
         }
       }
 
       function requestOtp() {
-        // Mock OTP generation
-        var otp = 262276;
-
-        // For the purpose of this mock, we'll store it in a variable.
-        window.mockOtp = otp;
-
-        // Show the OTP modal
+        const otp = "262276";
+        window.mockOtp = String(otp);
         otpModal.style.display = "block";
 
-        // Start the countdown
-        var timeLeft = 60;
-        var countdownElement = document.getElementById("otp-countdown");
+        let timeLeft = 60;
+        const countdownElement = document.getElementById("otp-countdown");
         countdownElement.textContent = `Time remaining: ${timeLeft}s`;
-        var countdownInterval = setInterval(function () {
-          timeLeft--;
+
+        clearInterval(window.otpCountdown);
+        window.otpCountdown = setInterval(function () {
+          timeLeft -= 1;
           countdownElement.textContent = `Time remaining: ${timeLeft}s`;
+
           if (timeLeft <= 0) {
-            clearInterval(countdownInterval);
+            clearInterval(window.otpCountdown);
             countdownElement.textContent = "OTP expired";
+            window.mockOtp = "";
           }
         }, 1000);
       }
 
       function verifyOtp() {
-        var enteredOtp = document.getElementById("otpInput").value;
+        const enteredOtp = document.getElementById("otpInput").value.trim();
+        const expectedOtp = String(window.mockOtp || "");
 
-        // Show loading modal
         loadingModal.style.display = "block";
         otpModal.style.display = "none";
 
         setTimeout(function () {
           loadingModal.style.display = "none";
-          if (enteredOtp == window.mockOtp) {
-            // Redirect to dashboard.html
+
+          if (enteredOtp && enteredOtp === expectedOtp) {
             window.location.href = "/html/dashboard.html";
-          } else {
-            // Incorrect OTP
-            loginAttempts++;
-            if (loginAttempts >= 3) {
-              // Display the modal dialog
-              modal.style.display = "block";
-            } else {
-              alert("Incorrect OTP. Please try again.");
-              otpModal.style.display = "block";
-            }
+            return;
           }
-        }, 2000); // Simulate a network request
+
+          loginAttempts += 1;
+
+          if (loginAttempts >= 3) {
+            modal.style.display = "block";
+          } else {
+            alert("Incorrect OTP. Please try again.");
+            otpModal.style.display = "block";
+          }
+        }, 1000);
       }
 
-      // Function to close the modal dialog
       function closeModal() {
         modal.style.display = "none";
       }
@@ -642,15 +620,8 @@
         otpModal.style.display = "none";
       }
 
-      // Event listener for the login button
-      const login = document.getElementById("loginBtn");
-      login.addEventListener("click", checkLogin);
-
-      // Event listener for the verify OTP button
-      const verifyOtpBtn = document.getElementById("verifyOtpBtn");
-      verifyOtpBtn.addEventListener("click", verifyOtp);
-
-      // Event listener for the close button of the modal
+      document.getElementById("loginBtn").addEventListener("click", checkLogin);
+      document.getElementById("verifyOtpBtn").addEventListener("click", verifyOtp);
       closeBtn.addEventListener("click", closeModal);
       closeOtpBtn.addEventListener("click", closeOtpModal);
     </script>
